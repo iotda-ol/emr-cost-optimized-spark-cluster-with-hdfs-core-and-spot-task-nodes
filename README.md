@@ -1,0 +1,2 @@
+# emr-cost-optimized-spark-cluster-with-hdfs-core-and-spot-task-nodes
+This repository demonstrates a cost-optimized Amazon EMR cluster design for large-scale Spark workloads. It uses On-Demand master and core nodes with EBS-backed HDFS for reliability, and auto-scaling Spot task nodes for variable compute demand. The architecture balances performance, fault tolerance, and cost, aligned with DEA-C01 best practices.
