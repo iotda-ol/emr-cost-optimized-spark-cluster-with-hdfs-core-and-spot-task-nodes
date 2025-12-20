@@ -1,0 +1,46 @@
+# AWS Configuration
+aws_region  = "us-east-1"
+environment = "production"
+
+# EMR Cluster Configuration
+cluster_name        = "spark-cost-optimized-cluster"
+emr_release_label   = "emr-6.15.0"
+key_name           = "my-ec2-keypair"
+log_uri            = "s3://my-emr-logs-bucket/emr-logs/"
+
+# Network Configuration
+vpc_id    = "vpc-xxxxxxxxxxxxxxxxx"
+subnet_id = "subnet-xxxxxxxxxxxxxxxxx"
+
+# Security Configuration
+allowed_cidr_blocks = [
+  "10.0.0.0/8",    # Internal network access
+  "203.0.113.0/24" # Example office IP range
+]
+
+# Master Node Configuration
+master_instance_type = "m5.xlarge"
+
+# Core Node Configuration (On-Demand with EBS-backed HDFS)
+core_instance_type           = "r5.2xlarge"
+core_instance_count          = 3
+core_ebs_volume_size         = 500
+core_ebs_volumes_per_instance = 2
+
+# Task Node Configuration (Spot instances)
+task_instance_type      = "r5.xlarge"
+task_instance_min_count = 10
+task_instance_max_count = 50
+# task_bid_price        = ""  # Leave empty for default Spot pricing
+
+# Additional Settings
+enable_termination_protection = false
+enable_ebs_encryption        = true
+auto_termination_minutes     = 0  # Set to 0 to disable auto-termination
+
+# Additional Tags
+tags = {
+  Owner       = "data-engineering-team"
+  CostCenter  = "analytics"
+  Compliance  = "pci-dss"
+}
